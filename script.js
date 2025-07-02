@@ -1,18 +1,13 @@
-// DOM Elements
 const gameContainer = document.querySelector('.game-container');
 const movesSpan = document.getElementById('moves');
 const timerSpan = document.getElementById('timer');
 const restartBtn = document.getElementById('restart-btn');
 const playAgainBtn = document.getElementById('play-again-btn');
 const winScreen = document.getElementById('win-screen');
-
-// Audio Elements
 const music = document.getElementById('music-bg');
 const flipSound = document.getElementById('flip-sound');
 const matchSound = document.getElementById('match-sound');
 const winSound = document.getElementById('win-sound');
-
-// Game state
 let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
@@ -21,8 +16,6 @@ let matches = 0;
 let timer = 0;
 let timerInterval = null;
 let gameStarted = false;
-
-// Cards data
 const cardFaces = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼'];
 
 function shuffle(array) {
@@ -46,7 +39,6 @@ function createBoard() {
     card.addEventListener('click', flipCard);
   });
 }
-
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -152,15 +144,10 @@ function resetGame() {
   [firstCard, secondCard] = [null, null];
   gameContainer.innerHTML = '';
 }
-
 function restartGame() {
   hideWinScreen();
   createBoard();
 }
-
-// Event Listeners
 restartBtn.addEventListener('click', restartGame);
 playAgainBtn.addEventListener('click', restartGame);
-
-// Start Game
 createBoard();
